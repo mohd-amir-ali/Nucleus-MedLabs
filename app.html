@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#081F32" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="nucleus-app" content="7.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Nucleus MedLabs" />
+  <title>Nucleus MedLabs · CareerShift</title>
+  <meta name="description" content="Explore healthcare career pathways, assess your skills and build a practical transition plan.">
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="Logo-Brandkit/favicons/favicon-dark.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="Logo-Brandkit/favicons/favicon-dark-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="Logo-Brandkit/icons/app-dark-180x180.png" />
+  <link rel="stylesheet" href="styles/app.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+</head>
+<body data-screen="screen-splash" data-viewport="fullscreen">
+  <div role="status" aria-live="polite" id="timer-alert-toast" class="timer-alert-toast no-print">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="color:var(--brand-rose);display:inline-flex">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </span>
+      <span id="timer-alert-title" style="font-family:var(--font-heading);font-size:13.5px;font-weight:600;color:var(--brand-rose)">Selection Required</span>
+    </div>
+    <div id="timer-alert-msg" style="font-size:12.5px;color:var(--text-secondary)">Please select an option to proceed.</div>
+    <div id="timer-alert-bar" class="timer-alert-bar"></div>
+  </div>
+  <div class="workspace-stage">
+    <div class="app-device-frame">
+      <header class="app-topbar no-print">
+        <div role="button" tabindex="0" id="topbar-brand-home" class="brand-lockup" title="Return to Home">
+          <div class="vector-logo-badge" style="width:38px;height:38px">
+            <img src="Logo-Brandkit/icons/app-rounded-light.svg" alt="Nucleus MedLabs Logo" class="theme-adaptive-logo" />
+          </div>
+          <div class="brand-title">Nucleus <span>MedLabs</span></div>
+        </div>
+
+        <div class="topbar-actions">
+          <div id="topbar-report-actions" style="display:none;gap:8px">
+            <button type="button" id="btn-save-favorite-role" class="icon-btn" title="Save career">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              </svg>
+            </button>
+            <button type="button" id="btn-share-report" class="icon-btn" title="Download career plan">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9"/>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                <rect x="6" y="14" width="12" height="8"/>
+              </svg>
+            </button>
+          </div>
+
+          <button type="button" id="btn-open-wishlist" class="icon-btn" title="Saved careers and courses">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span id="wishlist-count-badge" class="wishlist-count-badge" style="display:none">0</span>
+          </button>
+
+          <button type="button" id="btn-open-settings" class="icon-btn" title="Settings &amp; Account">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <path d="m9 3-1 3-3 1-2 5 2 5 3 1 1 3h6l1-3 3-1 2-5-2-5-3-1-1-3Z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+      <div id="step-progress-header" class="step-progress-header no-print" style="display:none" data-back-target="screen-welcome">
+        <button type="button" id="btn-step-back" class="step-back-btn" aria-label="Go Back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <div class="step-track">
+          <div id="step-fill-bar" class="step-fill" style="width:20%"></div>
+        </div>
+        <span id="step-counter-label" class="step-counter">Step 1 of 5</span>
+      </div>
+      <main class="screen-viewport">
+        <section id="screen-splash" class="app-screen medtech-auth-bg active">
+
+
+          <div class="splash-screen-inner">
+            <div class="vector-logo-badge splash-logo-pulsing" style="width:104px;height:104px">
+              <img src="Logo-Brandkit/icons/app-rounded-dark.svg" alt="Nucleus MedLabs Emblem" />
+            </div>
+            <h1 class="screen-title" style="font-size:26px">Nucleus <span style="color:var(--brand-teal)">MedLabs</span></h1>
+            <p class="screen-subtitle" style="max-width:310px;margin:6px auto 0">
+              CareerShift Navigator for Healthcare, Pharmacy &amp; Life Sciences Professionals.
+            </p>
+            <p class="splash-opening" role="status">Opening your workspace…</p>
+          </div>
+        </section>
+        <section id="screen-login" class="app-screen medtech-auth-bg">
+
+
+          <div class="auth-card">
+            <div class="auth-top-emblem-wrap">
+              <div class="vector-logo-badge" style="width:66px;height:66px;margin-bottom:10px">
+                <img src="Logo-Brandkit/icons/app-rounded-light.svg" alt="Nucleus MedLabs" class="theme-adaptive-logo" />
+              </div>
+              <h1 class="screen-title">Welcome to Nucleus <span style="color:var(--brand-teal)">MedLabs</span></h1>
+              <p id="login-subtitle" class="screen-subtitle" style="margin-bottom:4px">
+                Sign in with your registered Email address or Mobile number to access your career transition roadmap.
+              </p>
+            </div>
+
+            <div id="demo-name-field" class="form-group" hidden>
+              <label class="form-label" for="login-name-input">Your name</label>
+              <input type="text" id="login-name-input" class="form-input" placeholder="How should we address you?" autocomplete="name" maxlength="60" aria-describedby="login-error" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="login-contact-input">Email Address or Mobile Number</label>
+              <input type="text" id="login-contact-input" class="form-input" placeholder="e.g. name@domain.com or +91 98765 43210" autocomplete="username" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="login-password-input">Password</label>
+              <div class="password-input-wrap">
+                <input type="password" id="login-password-input" class="form-input" placeholder="Enter your password" autocomplete="current-password" />
+                <button type="button" class="password-eye-btn" data-target="login-password-input" aria-label="Show password" aria-pressed="false">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <p id="login-error" class="form-error" role="alert" hidden></p>
+            <button type="button" id="btn-login-submit" class="btn-primary" style="margin-top:6px">
+              <span>Sign in to workspace</span>
+            </button>
+
+            <button type="button" id="btn-recover-account" class="text-button">Forgot password? Use recovery code</button>
+            <p id="auth-service-note" class="content-note">Connecting to your workspace…</p>
+            <button type="button" id="btn-guest" class="btn-secondary">Explore as a guest</button>
+            <div id="login-register-note" style="text-align:center;margin:14px 0 10px;font-size:12.5px;color:var(--text-muted)">
+              New to Nucleus MedLabs CareerShift?
+            </div>
+
+            <button type="button" id="btn-go-register" class="btn-secondary">
+              <span>Create account</span>
+            </button>
+          </div>
+        </section>
+        <section id="screen-register" class="app-screen medtech-auth-bg">
+
+
+          <div class="auth-card">
+            <div class="auth-top-emblem-wrap">
+              <div class="vector-logo-badge" style="width:60px;height:60px;margin-bottom:10px">
+                <img src="Logo-Brandkit/icons/app-rounded-light.svg" alt="Nucleus MedLabs" class="theme-adaptive-logo" />
+              </div>
+              <h1 class="screen-title">Register Your Profile</h1>
+              <p class="screen-subtitle" style="margin-bottom:4px">
+                Use an email or Indian mobile number as your account ID. Contact verification is not connected in this local pilot.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="register-contact-input">Mobile Number or Email Address</label>
+              <input type="text" id="register-contact-input" class="form-input" placeholder="e.g. +91 98765 43210 or student@domain.com" autocomplete="email" />
+            </div>
+
+            <button type="button" id="btn-continue-register" class="btn-primary">
+              <span>Continue to account setup</span>
+            </button>
+
+            <button type="button" id="btn-back-to-login" class="btn-secondary" style="margin-top:10px">
+              <span>Back to Sign In</span>
+            </button>
+          </div>
+        </section>
+        <section id="screen-account-setup" class="app-screen medtech-auth-bg">
+
+
+          <div class="auth-card">
+            <div class="auth-top-emblem-wrap">
+              <div class="vector-logo-badge" style="width:58px;height:58px;margin-bottom:8px">
+                <img src="Logo-Brandkit/icons/app-rounded-light.svg" alt="Nucleus MedLabs" class="theme-adaptive-logo" />
+              </div>
+              <h1 class="screen-title">Set Up Your Account</h1>
+              <p class="screen-subtitle" style="margin-bottom:4px">
+                Choose your display name, username handle, and password for Nucleus MedLabs.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="setup-fullname-input">Full Name</label>
+              <input type="text" id="setup-fullname-input" class="form-input" placeholder="e.g. Your name" autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="setup-username-input">Username</label>
+              <input type="text" id="setup-username-input" class="form-input" placeholder="e.g. your.name" autocomplete="username" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="setup-password-input">Create Password</label>
+              <div class="password-input-wrap">
+                <input type="password" id="setup-password-input" class="form-input" placeholder="At least 12 characters" autocomplete="new-password" minlength="12" maxlength="128" />
+                <button type="button" class="password-eye-btn" data-target="setup-password-input" aria-label="Show password" aria-pressed="false">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <div class="strength-bars" hidden>
+                <div id="pass-bar-1" class="strength-bar"></div>
+                <div id="pass-bar-2" class="strength-bar"></div>
+                <div id="pass-bar-3" class="strength-bar"></div>
+                <div id="pass-bar-4" class="strength-bar"></div>
+              </div>
+            </div>
+
+            <button type="button" id="btn-complete-account-setup" class="btn-primary">
+              <span>Complete Setup &amp; Enter App</span>
+            </button>
+          </div>
+        </section>
+        <section id="screen-buffer" class="app-screen medtech-auth-bg">
+          <div class="buffer-loader-inner">
+            <div class="vector-logo-badge splash-logo-pulsing" style="width:84px;height:84px">
+              <img src="Logo-Brandkit/icons/app-rounded-light.svg" alt="Nucleus MedLabs Logo" class="theme-adaptive-logo" />
+            </div>
+            <h2 id="buffer-loader-title" class="screen-title" style="font-size:21px">Preparing Your Workspace</h2>
+            <p id="buffer-loader-subtitle" class="screen-subtitle" style="max-width:360px;margin:6px auto 0">
+              Synchronizing clinical career models and skill pathways...
+            </p>
+
+            <div class="buffer-progress-card">
+              <div style="display:flex;align-items:center;justify-content:space-between;font-family:var(--font-mono);font-size:11px;color:var(--brand-blue);font-weight:700">
+                <span>NUCLEUS MEDLABS ENGINE</span>
+                <span>PROCESSING</span>
+              </div>
+              <div class="buffer-bar-track">
+                <div id="buffer-loader-bar" class="buffer-bar-fill"></div>
+              </div>
+              <div id="buffer-loader-steps"></div>
+            </div>
+          </div>
+        </section>
+        <section id="screen-welcome" class="app-screen">
+          <div class="welcome-subheading-row">
+            <h2 id="welcome-user-greeting" class="welcome-greeting-subheading">Welcome to your workspace</h2>
+            <span class="welcome-greeting-subnote">CareerShift Workspace</span>
+          </div>
+
+          <div id="install-home-card" class="install-card" hidden>
+            <img src="Logo-Brandkit/icons/app-dark-192x192.png" width="48" height="48" alt="" />
+            <div><strong>Nucleus on your home screen</strong><p>Launch your workspace with one tap.</p></div>
+            <button type="button" class="btn-primary" data-install-app>Install app</button>
+          </div>
+          <div id="hero-carousel-shell" class="hero-carousel-shell" role="region" aria-roledescription="carousel" aria-label="Explore Nucleus MedLabs">
+            <div id="hero-carousel-track" class="hero-carousel-track"></div>
+            <div class="hero-carousel-footer">
+              <div id="hero-carousel-dots" class="hero-dots"></div>
+              <div class="hero-timer-bar">
+                <div id="hero-timer-fill" class="hero-timer-fill"></div>
+              </div>
+            </div>
+          </div>
+          <div id="workspace-overview" class="workspace-overview"></div>
+          <div class="feature-tiles-grid">
+            <div class="feature-tile" role="button" tabindex="0" data-tile-action="start">
+              <div class="feature-tile-icon" style="background:rgba(0,130,200,0.12);color:#0082C8">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              </div>
+              <div class="feature-tile-title">12<br/>Career Pathways</div>
+            </div>
+            <div class="feature-tile" role="button" tabindex="0" data-tile-action="skills">
+              <div class="feature-tile-icon" style="background:rgba(0,137,123,0.13);color:#00897B">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+              <div class="feature-tile-title">Skill<br/>Mapping</div>
+            </div>
+            <div class="feature-tile" role="button" tabindex="0" data-tile-action="compare">
+              <div class="feature-tile-icon" style="background:rgba(217,119,6,0.14);color:#D97706">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+              </div>
+              <div class="feature-tile-title">Compare<br/>Pathways</div>
+            </div>
+            <div class="feature-tile" role="button" tabindex="0" data-tile-action="roadmap">
+              <div class="feature-tile-icon" style="background:rgba(99,102,241,0.13);color:#4F46E5">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
+              </div>
+              <div class="feature-tile-title">Personalised<br/>Roadmaps</div>
+            </div>
+            <div class="feature-tile" role="button" tabindex="0" data-tile-action="courses">
+              <div class="feature-tile-icon" style="background:rgba(0,130,200,0.12);color:#0082C8">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
+              <div class="feature-tile-title">Relevant<br/>Courses</div>
+            </div>
+            <div class="feature-tile" role="button" tabindex="0" data-tile-action="counselling">
+              <div class="feature-tile-icon" style="background:rgba(234,88,12,0.14);color:#EA580C">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="feature-tile-title">Career<br/>Counselling</div>
+            </div>
+          </div>
+
+          <button type="button" id="btn-start-journey" class="btn-primary">
+            <span>Start Your Career Transition Journey</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+
+          <div class="section-heading-sm">
+            <span>Popular Transitions</span>
+            <span style="font-size:11.5px;color:var(--text-muted);font-weight:600">1-Tap Instant Preview</span>
+          </div>
+
+          <div id="popular-transitions-grid" class="popular-grid"></div>
+        </section>
+        <section id="screen-profession" class="app-screen">
+          <h1 class="screen-title">What Is Your Current Profession?</h1>
+          <p class="screen-subtitle">Select your current role, clinical internship, or fresh graduate option.</p>
+
+          <div class="search-box-wrap">
+            <span class="search-box-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </span>
+            <input type="text" id="profession-search-input" class="search-input" placeholder="Search Professions (e.g. Fresh Graduate, Pharmacist, Nurse)..." />
+          </div>
+
+          <div role="radiogroup" aria-label="Choose your profession" id="profession-list-container" class="profession-list"></div>
+
+          <div class="sticky-bottom-bar">
+            <button type="button" id="btn-step1-proceed" class="btn-primary">
+              <span>Proceed to Profile</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </section>
+        <section id="screen-profile" class="app-screen">
+          <h1 class="screen-title">Tell us about your profile</h1>
+          <p class="screen-subtitle">This helps us calculate your most relevant career options.</p>
+
+          <div class="profile-dropdowns-grid">
+            <div class="form-group">
+              <label class="form-label">Highest qualification</label>
+              <div id="dd-qualification-host"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Years of work experience</label>
+              <div id="dd-experience-host"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Current work setting</label>
+              <div id="dd-setting-host"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Current responsibilities (select all that apply)</label>
+            <div id="profile-responsibilities-list" class="checkbox-list"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="profile-add-skill-input">Additional technical skills</label>
+            <div id="profile-skill-chips" class="selected-skills-box"></div>
+            <div id="profile-suggested-skills" class="suggested-skills-pool"></div>
+            <input type="text" id="profile-add-skill-input" class="form-input" placeholder="Type a custom skill and press Enter..." />
+          </div>
+
+          <div class="sticky-bottom-bar">
+            <button type="button" id="btn-profile-next" class="btn-primary">
+              <span>Continue to interests</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </section>
+        <section id="screen-direction" class="app-screen">
+          <h1 class="screen-title">Which direction interests you?</h1>
+          <p class="screen-subtitle">Select one or more healthcare and corporate domains you want to explore.</p>
+
+          <div id="directions-grid-container" class="directions-grid"></div>
+
+          <div class="sticky-bottom-bar">
+            <button type="button" id="btn-direction-next" class="btn-primary">
+              <span>View career matches</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </section>
+        <section id="screen-matches" class="app-screen">
+          <h1 class="screen-title">Top Career Options for You</h1>
+          <p class="screen-subtitle">Dynamically ranked from your clinical profession, profile, and selected directions.</p>
+
+          <div role="radiogroup" aria-label="Choose a pathway" id="career-matches-container" class="career-matches-list"></div>
+
+          <div class="sticky-bottom-bar">
+            <button type="button" id="btn-step4-proceed" class="btn-primary">
+              <span>Select a Career Option Above to Proceed</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </section>
+        <section id="screen-report" class="app-screen">
+          <div class="report-hero-banner">
+            <div style="flex:1">
+              <div class="report-hero-top-bar">
+                <span class="report-hero-kicker">Career Transition Report</span>
+                <button type="button" id="btn-quick-switch-role" class="role-switcher-pill">
+                  <span>Switch / Reset Role</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+              </div>
+              <h1 id="report-hero-route-title" class="report-hero-route">Pharmacist to Regulatory Affairs Associate</h1>
+              <div class="report-hero-pills">
+                <span id="report-hero-fit-pill" class="hero-pill-fit">Readiness estimate</span>
+                <span id="report-hero-diff-pill" class="hero-pill-diff">Moderate Difficulty</span>
+                <span id="report-hero-salary-pill" class="badge-pill" style="background:rgba(255,255,255,0.16);color:#FFFFFF;font-family:var(--font-mono)">INR 4.5 - 8.2 LPA</span>
+              </div>
+            </div>
+            <div class="report-hero-gauge-box">
+              <svg width="72" height="72" viewBox="0 0 72 72">
+                <circle cx="36" cy="36" r="29" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="6"/>
+                <circle id="report-hero-gauge-arc" cx="36" cy="36" r="29" fill="none" stroke="#2CD4BD" stroke-width="6"
+                  stroke-dasharray="182.2" stroke-dashoffset="182.2" stroke-linecap="round" transform="rotate(-90 36 36)"/>
+              </svg>
+              <div class="report-hero-gauge-text">
+                <span id="report-hero-gauge-pct">0/100</span>
+              </div>
+            </div>
+          </div>
+          <nav class="report-tabs-nav" aria-label="Career Report Sections">
+            <button type="button" class="report-tab-btn active" data-report-tab="overview">Overview</button>
+            <button type="button" class="report-tab-btn" data-report-tab="skills">Skills</button>
+            <button type="button" class="report-tab-btn" data-report-tab="roadmap">Roadmap</button>
+            <button type="button" class="report-tab-btn" data-report-tab="jobs">Jobs</button>
+            <button type="button" class="report-tab-btn" data-report-tab="courses">Courses</button>
+          </nav>
+          <div id="report-pane-overview" class="report-tab-pane active">
+            <div class="overview-two-col-grid">
+              <div class="insight-card">
+                <h2 style="font-family:var(--font-heading);font-size:17px;font-weight:600;margin-bottom:8px">Your starting point</h2>
+                <p id="report-overview-summary" style="font-size:13.5px;color:var(--text-secondary);line-height:1.55"></p>
+              </div>
+
+              <div class="insight-card">
+                <h3 style="font-family:var(--font-heading);font-size:16px;font-weight:600">Key Insights</h3>
+                <div id="readiness-explanation" class="readiness-explanation"></div>
+            <div id="report-overview-insights" class="insight-list"></div>
+              </div>
+            </div>
+          </div>
+          <div id="report-pane-skills" class="report-tab-pane">
+            <div>
+              <h2 style="font-family:var(--font-heading);font-size:18px;font-weight:600">Skills Analysis</h2>
+              <p style="font-size:13px;color:var(--text-secondary)">Tap any skill card below to inspect the complete competency list.</p>
+            </div>
+
+            <div class="skills-two-col">
+              <div id="card-bucket-current" class="skill-bucket-card current-bucket" role="button" tabindex="0">
+                <div class="bucket-header">
+                  <div class="bucket-icon-box" style="background:var(--brand-emerald-soft);color:var(--brand-teal)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-family:var(--font-heading);font-size:13.5px;font-weight:600">Current Skills</div>
+                    <div style="font-size:11.5px;color:var(--text-muted)">(Self-reported)</div>
+                  </div>
+                </div>
+                <span class="bucket-count-badge" style="background:var(--brand-emerald-soft);color:var(--brand-teal)">12 Skills</span>
+                <div id="skills-current-preview" class="skill-mini-list"></div>
+                <span class="view-all-link">View all 12 skills</span>
+              </div>
+
+              <div id="card-bucket-transfer" class="skill-bucket-card transfer-bucket" role="button" tabindex="0">
+                <div class="bucket-header">
+                  <div class="bucket-icon-box" style="background:var(--brand-blue-soft);color:var(--brand-blue)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-family:var(--font-heading);font-size:13.5px;font-weight:600">Transferable Skills</div>
+                    <div style="font-size:11.5px;color:var(--text-muted)">(Suggested, not verified)</div>
+                  </div>
+                </div>
+                <span class="bucket-count-badge" style="background:var(--brand-blue-soft);color:var(--brand-blue)">10 Skills</span>
+                <div id="skills-transfer-preview" class="skill-mini-list"></div>
+                <span class="view-all-link">View all 10 skills</span>
+              </div>
+            </div>
+
+            <div id="card-bucket-gap" class="skill-bucket-card gap-bucket" role="button" tabindex="0">
+              <div class="bucket-header">
+                <div class="bucket-icon-box" style="background:rgba(225,29,72,0.16);color:var(--brand-rose)">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <div>
+                  <div style="font-family:var(--font-heading);font-size:14.5px;font-weight:600;color:var(--brand-rose)">New Skills to Acquire</div>
+                  <div style="font-size:11.5px;color:var(--text-secondary)">(Required for Transition)</div>
+                </div>
+              </div>
+              <span class="bucket-count-badge" style="background:rgba(225,29,72,0.14);color:var(--brand-rose)">8 Skills</span>
+              <div id="skills-gap-preview" class="gap-two-col-list"></div>
+              <span class="view-all-link" style="color:var(--brand-rose)">View all 8 skills</span>
+            </div>
+          </div>
+          <div id="report-pane-roadmap" class="report-tab-pane">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <div>
+                <h2 style="font-family:var(--font-heading);font-size:18px;font-weight:600">Your Learning Roadmap</h2>
+                <p style="font-size:12.5px;color:var(--text-secondary)">Tap any phase below as you complete it, or open the physical Candidate Tracker Sheet.</p>
+              </div>
+              <span id="roadmap-progress-pct" class="badge-pill badge-match-high" style="font-family:var(--font-mono)">0% Completed</span>
+            </div>
+
+            <div class="step-track" style="height:7px">
+              <div id="roadmap-progress-fill" class="step-fill" style="width:0%"></div>
+            </div>
+
+            <div id="report-roadmap-timeline" class="roadmap-timeline"></div>
+
+            <div class="est-time-banner">
+              <div style="display:flex;align-items:center;gap:12px">
+                <div class="prof-icon-badge" style="background:var(--brand-blue);color:#FFFFFF;width:40px;height:40px">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div>
+                  <div style="font-size:12px;font-weight:600;color:var(--text-secondary)">Estimated Transition Time</div>
+                  <div id="report-est-timeline-value" style="font-family:var(--font-heading);font-size:18px;font-weight:600;color:var(--text-primary)">6 - 10 months</div>
+                </div>
+              </div>
+              <button type="button" id="btn-roadmap-print-pdf" class="btn-next-inline">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                <span>Open PDF Tracker Sheet</span>
+              </button>
+            </div>
+          </div>
+          <div id="report-pane-jobs" class="report-tab-pane">
+            <div>
+              <h2 style="font-family:var(--font-heading);font-size:18px;font-weight:600">Find current opportunities</h2>
+              <p style="font-size:13px;color:var(--text-secondary)">Entry-level and transition-friendly roles.</p>
+            </div>
+
+            <div class="linkedin-live-bar">
+              <div>
+                <div style="font-family:var(--font-heading);font-size:13.5px;font-weight:600">Personalised LinkedIn search</div>
+                <div style="font-size:11.5px;opacity:0.92">Choose your preferences, then review listings on LinkedIn</div>
+              </div>
+              <button type="button" id="btn-sync-linkedin-live" class="linkedin-sync-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#0A66C2"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                <span>Search LinkedIn</span>
+              </button>
+            </div>
+
+<div class="jobs-filter-grid">
+<div><label class="form-label" for="job-keywords">Job keywords</label><input id="job-keywords" class="form-input" maxlength="160"></div>
+<div><label class="form-label" for="job-location">City or country</label><input id="job-location" class="form-input" maxlength="100"></div><div><label class="form-label" for="job-experience">Experience</label><select id="job-experience" class="form-input"><option value="">Any experience</option><option value="1">Internship</option><option value="2">Entry level</option><option value="3">Associate</option><option value="4">Mid-senior level</option></select></div><div><label class="form-label" for="job-employment">Employment type</label><select id="job-employment" class="form-input"><option value="">Any type</option><option value="F">Full-time</option><option value="P">Part-time</option><option value="C">Contract</option><option value="I">Internship</option></select></div><div><label class="form-label" for="job-workplace">Workplace</label><select id="job-workplace" class="form-input"><option value="">Any workplace</option><option value="1">On-site</option><option value="2">Remote</option><option value="3">Hybrid</option></select></div><div><label class="form-label" for="job-date">Date posted</label><select id="job-date" class="form-input"><option value="">Any time</option><option value="r86400">Past 24 hours</option><option value="r604800">Past week</option><option value="r2592000">Past month</option></select></div></div><p class="content-note">Opens an external search, not an in-app vacancy feed. LinkedIn may ask you to sign in. Verify the closing date and requirements before applying.</p>
+            <div id="report-jobs-container" style="display:flex;flex-direction:column;gap:10px"></div>
+
+            <button type="button" id="btn-view-all-jobs-linkedin" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#0A66C2"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+              <span>Search jobs on LinkedIn</span>
+            </button>
+          </div>
+          <div id="report-pane-courses" class="report-tab-pane">
+            <div>
+              <h2 style="font-family:var(--font-heading);font-size:18px;font-weight:600">Learning for your next direction</h2>
+              <p style="font-size:13px;color:var(--text-secondary)">Explore topics and provider catalogues for your chosen pathway.</p>
+            </div>
+            <p class="content-note">Learning topics are planning suggestions. Check each provider for current courses, fees, recognition and eligibility.</p>
+            <div id="report-courses-list" style="display:flex;flex-direction:column;gap:12px"></div>
+          </div>
+
+          <div class="sticky-bottom-bar">
+            <button type="button" id="btn-get-full-transition-plan" class="btn-primary">
+              <span>Get Full Transition Plan</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </section>
+        <section id="screen-cta" class="app-screen">
+          <div class="cta-dark-container">
+            <div>
+              <h1 style="font-family:var(--font-heading);font-size:24px;font-weight:600;line-height:1.2">
+                Your Next Career Move<br/>Starts Here.
+              </h1>
+              <p style="font-size:13.5px;color:#99F6E4;margin-top:6px">
+                Get personalised support from Nucleus MedLabs to make your transition successful.
+              </p>
+            </div>
+
+            <div class="cta-action-card">
+              <div class="popular-card-icon" style="background:rgba(147,51,234,0.12);color:#7E22CE;width:42px;height:42px">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><path d="M9 14l2 2 4-4"/></svg>
+              </div>
+              <div style="flex:1">
+                <div style="font-family:var(--font-heading);font-size:15px;font-weight:600">Book a Career Transition Consultation</div>
+                <p style="font-size:12.5px;color:var(--text-secondary);margin:4px 0 10px">
+                  Get expert guidance on your profile, target roles, and action plan.
+                </p>
+                <button type="button" id="btn-cta-book-consultation" class="btn-next-inline">
+                  <span>Book a Consultation</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="cta-action-card">
+              <div class="popular-card-icon" style="background:rgba(234,88,12,0.12);color:#EA580C;width:42px;height:42px">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              </div>
+              <div style="flex:1">
+                <div style="font-family:var(--font-heading);font-size:15px;font-weight:600">Find Courses to Close Your Skill Gaps</div>
+                <p style="font-size:12.5px;color:var(--text-secondary);margin:4px 0 10px">
+                  Discover relevant certifications and practical training programs.
+                </p>
+                <button type="button" id="btn-cta-explore-courses" class="btn-next-inline">
+                  <span>Explore Courses</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="cta-action-card">
+              <div class="popular-card-icon" style="background:rgba(16,185,129,0.14);color:#059669;width:42px;height:42px">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+              </div>
+              <div style="flex:1">
+                <div style="font-family:var(--font-heading);font-size:15px;font-weight:600">Candidate Career Transition Tracker Sheet</div>
+                <p style="font-size:12.5px;color:var(--text-secondary);margin:4px 0 10px">
+                  Print as A4 PDF or download your physical milestone &amp; competency tracker sheet.
+                </p>
+                <button type="button" id="btn-cta-get-plan" class="btn-next-inline">
+                  <span>Open Tracker Sheet</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-compare" class="app-screen">
+          <div class="page-intro"><p class="eyebrow">MAKE AN INFORMED CHOICE</p><h1 class="screen-title">Compare pathways</h1><p>Explore the preparation, skills and opportunities for your next move.</p></div>
+          <div id="compare-page-content"></div>
+        </section>
+        <section id="screen-saved" class="app-screen">
+          <div class="page-intro"><p class="eyebrow">YOUR SHORTLIST</p><h1 class="screen-title">Saved for later</h1><p>Keep the careers, learning tracks and articles you want to revisit.</p></div>
+          <div id="saved-page-content"></div>
+          <div id="saved-updates-content"></div>
+        </section>
+        <section id="screen-updates" class="app-screen">
+          <div class="page-intro"><p class="eyebrow">THE MEDTECH BRIEF</p><h1 class="screen-title">Updates</h1><p>Useful reading for a changing healthcare landscape.</p></div>
+          <p class="content-note">Career guidance and industry resources, selected for your next step. Read the original source for full details.</p>
+          <p id="updates-status" class="feed-status" role="status">Loading reading list...</p>
+          <div id="updates-filters" class="filter-chips" role="group" aria-label="Filter updates"></div>
+          <div id="updates-list" class="updates-grid"></div>
+        </section>
+        <section id="screen-settings" class="app-screen">
+          <div style="margin-bottom:12px">
+            <h1 class="screen-title">Settings</h1>
+            <p style="font-size:12.5px;color:var(--text-muted);margin-top:2px">Personalise your workspace and manage your saved progress.</p>
+          </div>
+
+          <div class="settings-group">
+            <div class="settings-row">
+              <div>
+                <div id="settings-user-fullname" style="font-family:var(--font-heading);font-size:16px;font-weight:600">Your name</div>
+                <div id="settings-user-handle" style="font-family:var(--font-mono);font-size:12px;color:var(--brand-blue)">@your.name</div>
+                <div id="settings-user-contact" style="font-size:12.5px;color:var(--text-secondary);margin-top:2px">Your account contact</div>
+              </div>
+              <button type="button" id="btn-settings-edit-profile" class="btn-secondary" style="width:auto;padding:7px 12px;font-size:12px">
+                Edit profile
+              </button>
+            </div>
+            <div class="settings-row">
+              <div>
+                <div style="font-size:12px;color:var(--text-muted)">Active professional profile</div>
+                <div id="settings-current-prof" style="font-family:var(--font-heading);font-size:13.5px;font-weight:600">Pharmacist | B.Pharm.</div>
+              </div>
+              <button type="button" id="btn-settings-new-assessment" class="btn-secondary" style="width:auto;padding:6px 11px;font-size:11.5px">
+                New assessment
+              </button>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <div class="settings-row">
+              <div>
+                <div style="font-family:var(--font-heading);font-size:14px;font-weight:600">Appearance</div>
+                <div id="settings-theme-status" style="font-size:12px;color:var(--text-secondary)">Light (Clinical Day)</div>
+              </div>
+              <button type="button" id="btn-settings-toggle-theme" class="btn-secondary" style="width:auto;padding:8px 14px;font-size:12.5px">
+                Switch theme
+              </button>
+            </div>
+            <div class="settings-row settings-row-stacked">
+              <div>
+                <div style="font-family:var(--font-heading);font-size:14px;font-weight:600">Default job search city</div>
+                <div style="font-size:12px;color:var(--text-secondary)">Used for role examples and LinkedIn searches</div>
+              </div>
+              <div id="dd-settings-city-host"></div>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <div class="settings-row settings-row-stacked">
+              <div style="font-family:var(--font-heading);font-size:14px;font-weight:600">About Nucleus MedLabs</div>
+              <p class="content-note">CareerShift 8.6.0<br><span id="app-edition">Device workspace</span></p>
+              <a href="https://nucleusmedlabs.com/" target="_blank" rel="noopener noreferrer" class="text-button" data-external-link>Visit Nucleus MedLabs</a>
+              <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.5">
+                Nucleus MedLabs is a strategic healthcare consulting, academic &amp; career advancement, nutraceutical compliance, and global medical access partner serving healthcare, pharmacy, and life sciences professionals.
+              </p>
+            </div>
+            <div class="settings-row settings-row-stacked">
+              <div style="font-family:var(--font-heading);font-size:14px;font-weight:600">Contact and counselling</div>
+              <div style="font-size:12.5px;color:var(--text-secondary)">Location: Banjara Hills, Road No. 12, Hyderabad, Telangana, India</div>
+              <div style="font-size:12.5px;color:var(--text-secondary)">Advisory support: Academic &amp; Career Advancement Division</div>
+              <button type="button" class="btn-secondary" id="btn-settings-consultation">Explore career counselling</button>
+            </div>
+          </div>
+
+          <div class="settings-group account-tools">
+            <strong>App installation</strong>
+            <p id="install-status" class="content-note" role="status">Checking installation support…</p>
+            <button type="button" class="btn-secondary" data-install-app>Install app</button>
+            <p id="offline-note" class="content-note" role="status">Checking offline access…</p>
+          </div>
+          <div class="settings-group account-tools"><p id="account-storage-note" class="content-note">Accounts and consultation requests are stored on the Mac running this pilot. Email/SMS and advisor notifications are not connected.</p>
+            <button type="button" id="btn-settings-export" class="btn-secondary">Export workspace backup</button>
+            <label class="form-label" for="btn-settings-import">Restore workspace backup</label><input type="file" id="btn-settings-import" accept=".json,application/json">
+          </div>
+          <button type="button" id="btn-settings-clear" class="btn-secondary" hidden>Clear this device's workspace</button>
+          <button type="button" id="btn-settings-logout" class="btn-secondary" style="color:var(--brand-rose);border-color:rgba(225,29,72,0.35)">
+            <span>Sign out</span>
+          </button>
+        </section>
+
+      </main>
+      <div id="workspace-save-notice" class="save-status no-print" hidden><span id="workspace-save-status" role="status" aria-live="polite"></span><button type="button" id="btn-retry-save" class="text-button" hidden>Review / retry</button></div>
+      <nav class="workspace-nav no-print" aria-label="Workspace navigation">
+        <button type="button" data-nav="home"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg><span>Home</span></button>
+        <button type="button" data-nav="compare"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="2"/><rect x="14" y="4" width="7" height="16" rx="2"/><path d="M6 9h1m10 6h1"/></svg><span>Compare</span></button>
+        <button type="button" data-nav="saved"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z"/></svg><span>Saved</span></button>
+        <button type="button" data-nav="updates"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 3h16v16a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7h2m0-4v16"/><path d="M9 7h8M9 11h8m-8 4h3m3 0h2"/></svg><span>Updates</span></button>
+      </nav>
+    </div>
+  </div>
+  <div id="app-modal-backdrop" class="modal-backdrop no-print" role="dialog" aria-modal="true" aria-labelledby="app-modal-title">
+    <div class="modal-sheet">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <h3 id="app-modal-title" style="font-family:var(--font-heading);font-size:17px;font-weight:600">Details</h3>
+        <button type="button" id="btn-close-modal" class="modal-close-box" aria-label="Close Modal">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div id="app-modal-body"></div>
+    </div>
+  </div>
+  
+  <dialog id="install-help-dialog" class="install-dialog" aria-labelledby="install-help-title">
+    <h2 id="install-help-title">Install Nucleus MedLabs</h2>
+    <p id="install-help-text"></p>
+    <button type="button" id="install-help-close" class="btn-primary">Got it</button>
+  </dialog>
+
+  <script src="scripts/runtime_config.js"></script>
+  <script src="scripts/platform.js"></script>
+  <script src="scripts/demo_access.js"></script>
+  <!-- NATIVE_BRIDGE -->
+  <script src="scripts/controls.js"></script>
+  <script src="data/updates-bundled.js"></script>
+  <script src="scripts/updates.js"></script>
+  <script src="scripts/install_app.js"></script>
+  <script src="data/career_engine_data.js"></script>
+  <script src="scripts/career_engine.js"></script>
+  <script src="scripts/api.js"></script>
+  <script src="scripts/pdf_vendor.js"></script>
+  <script src="scripts/pdf_export.js"></script>
+  <script src="scripts/app_controller.js"></script>
+</body>
+</html>
