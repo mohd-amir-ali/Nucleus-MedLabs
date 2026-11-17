@@ -2,9 +2,9 @@
 
 # CareerShift by Nucleus MedLabs
 
-[![Open web platform](https://img.shields.io/badge/WEB_PLATFORM-OPEN-00897B?style=for-the-badge)](https://mohd-amir-ali.github.io/Nucleus-MedLabs-CareerShift/)
-[![Download Android](https://img.shields.io/badge/ANDROID_APK-DOWNLOAD-0B253A?style=for-the-badge)](https://github.com/mohd-amir-ali/Nucleus-MedLabs-CareerShift/releases/latest)
-[![Android build](https://github.com/mohd-amir-ali/Nucleus-MedLabs-CareerShift/actions/workflows/android-apk-build.yml/badge.svg)](https://github.com/mohd-amir-ali/Nucleus-MedLabs-CareerShift/actions/workflows/android-apk-build.yml)
+[![Open web platform](https://img.shields.io/badge/WEB_PLATFORM-OPEN-00897B?style=for-the-badge)](https://mohd-amir-ali.github.io/Nucleus-MedLabs/)
+[![Download Android](https://img.shields.io/badge/ANDROID_APK-DOWNLOAD-0B253A?style=for-the-badge)](https://github.com/mohd-amir-ali/Nucleus-MedLabs/releases/latest)
+[![Android build](https://github.com/mohd-amir-ali/Nucleus-MedLabs/actions/workflows/android-apk-build.yml/badge.svg)](https://github.com/mohd-amir-ali/Nucleus-MedLabs/actions/workflows/android-apk-build.yml)
 
 A healthcare career planning workspace that connects professional experience to possible next steps. Explore 12 career directions from 14 professional starting points, understand your skill gaps, compare options, and take a printable plan into your next career conversation.
 
