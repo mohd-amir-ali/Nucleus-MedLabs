@@ -1,0 +1,131 @@
+name: Build Android app
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      publish_release:
+        description: Publish the version in package.json as a downloadable GitHub Release
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  checks:
+    uses: ./.github/workflows/checks.yml
+  build:
+    needs: checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    outputs:
+      version: ${{ steps.version.outputs.value }}
+      signed: ${{ steps.signing.outputs.enabled }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
+      - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - run: npm ci
+      - run: npm run bundle && npm run build:android
+      - run: npm run android:prepare
+      - run: npm run audit:source
+      - name: Read release version
+        id: version
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+          version=json.load(open('package.json'))['version']
+          assert re.fullmatch(r'\d+\.\d+\.\d+',version)
+          if os.environ['GITHUB_REF'].startswith('refs/tags/'):
+              assert os.environ['GITHUB_REF_NAME']=='v'+version, 'Tag must match package.json version'
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('value='+version+'\n')
+          PY
+      - name: Prepare optional signing
+        id: signing
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          python3 - <<'PY'
+          import os, base64
+          from pathlib import Path
+          keys=['KEYSTORE_BASE64','KEYSTORE_PASSWORD','KEY_ALIAS','KEY_PASSWORD']
+          present=[bool(os.environ.get(k)) for k in keys]
+          if any(present) and not all(present):raise SystemExit('Configure all four Android signing secrets.')
+          if all(present):
+              path=Path(os.environ['RUNNER_TEMP'])/'nucleus-release.jks'
+              path.write_bytes(base64.b64decode(os.environ['KEYSTORE_BASE64'],validate=True))
+              path.chmod(0o600)
+              with open(os.environ['GITHUB_ENV'],'a') as f:f.write('ANDROID_KEYSTORE_PATH='+str(path)+'\n')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('enabled='+str(all(present)).lower()+'\n')
+          PY
+      - name: Compile installable APK and optional Play bundle
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          SIGNED: ${{ steps.signing.outputs.enabled }}
+          VERSION: ${{ steps.version.outputs.value }}
+        run: |
+          chmod +x android/gradlew
+          mkdir -p releases
+          if [ "$SIGNED" = true ]; then
+            (cd android && ./gradlew --no-daemon assembleRelease bundleRelease)
+            cp android/app/build/outputs/apk/release/app-release.apk "releases/Nucleus-MedLabs-v$VERSION.apk"
+            cp android/app/build/outputs/bundle/release/app-release.aab "releases/Nucleus-MedLabs-v$VERSION.aab"
+          else
+            (cd android && ./gradlew --no-daemon assembleDebug)
+            cp android/app/build/outputs/apk/debug/app-debug.apk "releases/Nucleus-MedLabs-v$VERSION-preview.apk"
+          fi
+          python3 scripts/release_checksums.py
+      - name: Remove temporary signing material
+        if: always()
+        run: rm -f "$RUNNER_TEMP/nucleus-release.jks"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: Nucleus-MedLabs-Android-${{ steps.version.outputs.value }}
+          path: releases/
+          if-no-files-found: error
+          retention-days: 30
+  release:
+    if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish_release)
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: Nucleus-MedLabs-Android-${{ needs.build.outputs.version }}
+          path: release-files
+      - name: Publish APK assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_VERSION: ${{ needs.build.outputs.version }}
+          SIGNED: ${{ needs.build.outputs.signed }}
+          TARGET_SHA: ${{ github.sha }}
+        run: |
+          if [ "$SIGNED" = true ]; then
+            printf '%s\n' 'Android test release with the repository signing identity. Includes an APK for direct installation and an AAB for Play Console review. Device acceptance testing is still required.' > notes.md
+          else
+            printf '%s\n' 'Android preview for evaluation. This APK uses a temporary debug signing key. Export your workspace before replacing it: a later build may require uninstalling this copy. Cloud login and OTP are not enabled.' > notes.md
+          fi
+          if ! gh release view "v$RELEASE_VERSION" >/dev/null 2>&1; then
+            gh release create "v$RELEASE_VERSION" --target "$TARGET_SHA" --title "Nucleus MedLabs $RELEASE_VERSION" --notes-file notes.md
+          fi
+          gh release upload "v$RELEASE_VERSION" release-files/* --clobber
