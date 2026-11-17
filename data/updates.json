@@ -1,0 +1,380 @@
+{
+  "schemaVersion": 1,
+  "curatedAt": "2026-11-17",
+  "articles": [
+    {
+      "id": "nucleus-clinical-to-non-clinical-careers",
+      "title": "Leaving Clinical Practice: The Non-Clinical Careers That Welcome Doctors",
+      "summary": "Explore non-clinical directions that draw on medical experience, and the skills a transition may require.",
+      "source": "Nucleus MedLabs",
+      "category": "Career moves",
+      "url": "https://nucleusmedlabs.com/blog/clinical-to-non-clinical-careers",
+      "publishedAt": "2026-09-19T00:00:00Z",
+      "kind": "Article",
+      "image": "career-transitions"
+    },
+    {
+      "id": "nucleus-resume-writing-healthcare-professionals",
+      "title": "Writing a Healthcare Resume That Actually Gets Read",
+      "summary": "Make your healthcare experience easier for a recruiter to understand through a focused, clearly structured CV.",
+      "source": "Nucleus MedLabs",
+      "category": "Job readiness",
+      "url": "https://nucleusmedlabs.com/blog/resume-writing-healthcare-professionals",
+      "publishedAt": "2026-09-17T00:00:00Z",
+      "kind": "Article",
+      "image": "cv-preparation"
+    },
+    {
+      "id": "nucleus-linkedin-profile-healthcare-recruiters",
+      "title": "Your LinkedIn Profile Is Being Read by Recruiters You Will Never See",
+      "summary": "Review how you present your healthcare experience, skills and direction in a professional online profile.",
+      "source": "Nucleus MedLabs",
+      "category": "Job readiness",
+      "url": "https://nucleusmedlabs.com/blog/linkedin-profile-healthcare-recruiters",
+      "publishedAt": "2026-09-16T00:00:00Z",
+      "kind": "Article",
+      "image": "professional-profiles"
+    },
+    {
+      "id": "nucleus-healthcare-job-interview-preparation",
+      "title": "Preparing for a Healthcare Job Interview Abroad",
+      "summary": "Prepare to discuss your experience, clinical judgement and communication in an international healthcare interview.",
+      "source": "Nucleus MedLabs",
+      "category": "Job readiness",
+      "url": "https://nucleusmedlabs.com/blog/healthcare-job-interview-preparation",
+      "publishedAt": "2026-09-15T00:00:00Z",
+      "kind": "Article",
+      "image": "interviews"
+    },
+    {
+      "id": "nucleus-career-counselling-vs-agent-advice",
+      "title": "Career Counselling Versus Agent Advice: The Difference Matters",
+      "summary": "Understand the different roles of a career counsellor and an education agent before choosing support.",
+      "source": "Nucleus MedLabs",
+      "category": "Career moves",
+      "url": "https://nucleusmedlabs.com/blog/career-counselling-vs-agent-advice",
+      "publishedAt": "2026-09-22T00:00:00Z",
+      "kind": "Article",
+      "image": "counselling"
+    },
+    {
+      "id": "nucleus-data-privacy",
+      "title": "Data Privacy in Healthcare: What GDPR and India's New Rules Mean in Practice",
+      "summary": "Explore a Nucleus perspective on healthcare data privacy. Consult current official guidance for compliance decisions.",
+      "source": "Nucleus MedLabs",
+      "category": "MedTech",
+      "url": "https://nucleusmedlabs.com/blog/data-privacy-healthcare",
+      "publishedAt": "2026-06-11T00:00:00Z",
+      "kind": "Article",
+      "image": "healthcare-privacy"
+    },
+    {
+      "id": "who-digital-health",
+      "title": "Digital health: the wider healthcare landscape",
+      "summary": "Explore WHO resources on digital health and how technology can support health systems.",
+      "source": "World Health Organization",
+      "category": "MedTech",
+      "url": "https://www.who.int/health-topics/digital-health",
+      "publishedAt": null,
+      "kind": "Resource",
+      "image": "digital-health"
+    },
+    {
+      "id": "clinical-studies",
+      "title": "Understand clinical research studies",
+      "summary": "Learn the distinction between interventional and observational studies, and how research participation works.",
+      "source": "ClinicalTrials.gov",
+      "category": "MedTech",
+      "url": "https://clinicaltrials.gov/study-basics/about-studies",
+      "publishedAt": null,
+      "kind": "Resource",
+      "image": "clinical-research"
+    },
+    {
+      "id": "ich-efficacy",
+      "title": "A starting point for Good Clinical Practice",
+      "summary": "Find ICH efficacy guidelines, including Good Clinical Practice, for further study of clinical research standards.",
+      "source": "ICH",
+      "category": "MedTech",
+      "url": "https://www.ich.org/page/efficacy-guidelines",
+      "publishedAt": null,
+      "kind": "Resource",
+      "image": "regulatory-affairs"
+    },
+    {
+      "id": "fda-device-updates",
+      "title": "Medical device news and updates",
+      "summary": "Visit the official FDA collection of medical device announcements, guidance and safety updates.",
+      "source": "FDA",
+      "category": "MedTech",
+      "url": "https://www.fda.gov/medical-devices/medical-devices-news-and-events/cdrh-new-news-and-updates",
+      "publishedAt": null,
+      "kind": "Resource",
+      "image": "medical-devices"
+    },
+    {
+      "id": "who-patient-safety",
+      "title": "Patient safety: building safer systems of care",
+      "summary": "Explore the role of reliable processes, learning and teamwork in reducing avoidable patient harm.",
+      "source": "World Health Organization",
+      "category": "Patient safety",
+      "kind": "Resource",
+      "url": "https://www.who.int/health-topics/patient-safety",
+      "image": "patient-safety"
+    },
+    {
+      "id": "openwho-learning",
+      "title": "Explore public health learning with OpenWHO",
+      "summary": "Discover learning resources for health emergencies and public health practice. Check the platform for current topics and access details.",
+      "source": "OpenWHO",
+      "category": "Learning",
+      "kind": "Resource",
+      "url": "https://openwho.org/",
+      "image": "professional-learning"
+    }
+  ],
+  "archive": [
+    {
+      "id": "fda-e20cd0f67b3d615b84e7",
+      "title": "Eugia US LLC (f/k/a Auro Medics Pharma LLC) Issues Voluntary Nationwide Recall of Vancomycin Hydrochloride for Injection USP 1.25g/Vial-30mL (Single Dose Vial) Due to  Presence of ",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/eugia-us-llc-fka-auro-medics-pharma-llc-issues-voluntary-nationwide-recall-vancomycin-hydrochloride",
+      "publishedAt": "2026-11-09T05:00:00+00:00",
+      "kind": "News",
+      "image": "regulatory-affairs"
+    },
+    {
+      "id": "fda-59140e2c9e4faf9f4f66",
+      "title": "Convenience Kit Correction: Cardinal Health Updates Use Instructions for Presource Packs Containing BD Alaris Pump Infusion Sets",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-cardinal-health-updates-use-instructions-presource-packs-containing-bd",
+      "publishedAt": "2026-11-09T05:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-a15a4a011a91d03b702d",
+      "title": "Heart Pump Controller Recall: Abiomed Removes Automated Impella Controllers (AIC)",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/heart-pump-controller-recall-abiomed-removes-automated-impella-controllers-aic",
+      "publishedAt": "2026-11-09T05:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-c462eb522ae30228fea1",
+      "title": "MedWatch Alert: FDA Requires Safety Labeling Changes for Glucagon-Like Peptide-1 Receptor Agonists (GLP-1 RAs) Due to Potential Increased Risk of Rare But Serious Eye Condition: FD",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/safety/medical-product-safety-information/medwatch-alert-fda-requires-safety-labeling-changes-glucagon-peptide-1-receptor-agonists-glp-1-ras",
+      "publishedAt": "2026-11-09T05:00:00+00:00",
+      "kind": "News",
+      "image": "regulatory-affairs"
+    },
+    {
+      "id": "fda-e781c4f22d672e099b82",
+      "title": "MedWatch Alert: FDA Investigating Serious Risk of Malignancy Linked to Zolgensma Gene Therapy",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/safety/medical-product-safety-information/medwatch-alert-fda-investigating-serious-risk-malignancy-linked-zolgensma-gene-therapy",
+      "publishedAt": "2026-11-06T05:00:00+00:00",
+      "kind": "News",
+      "image": "regulatory-affairs"
+    },
+    {
+      "id": "fda-1c07f035cfc45ee2e5d6",
+      "title": "Early Alert: Compact Medical Removes and Updates Use Instructions for ButterflyBVM Bag-Valve-Mask Resuscitators",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-compact-medical-removes-and-updates-use-instructions-butterflybvm-bag-valve-mask",
+      "publishedAt": "2026-11-03T05:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-14e6b02a0c19333680c7",
+      "title": "Early Alert: B. Braun Medical Inc. Removes Streamline Bloodline Set for Dialog+",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-b-braun-medical-inc-removes-streamline-bloodline-set-dialog",
+      "publishedAt": "2026-11-02T05:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-8af21f8e948eaab68cdb",
+      "title": "MedWatch Alert: FDA Advises Consumers Not to Buy or Serve Once Upon a Farm Tractor Wheels Organic Toddler Soft-Baked Bars",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/safety/medical-product-safety-information/medwatch-alert-fda-advises-consumers-not-buy-or-serve-once-upon-farm-tractor-wheels-organic-toddler",
+      "publishedAt": "2026-11-02T05:00:00+00:00",
+      "kind": "News",
+      "image": "regulatory-affairs"
+    },
+    {
+      "id": "fda-6882ae5cb93fd26a7e9b",
+      "title": "Hospital Glucose Meter Correction: Nova Biomedical Updates Use Instructions for StatStrip Glucose Hospital Meter Systems",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/hospital-glucose-meter-correction-nova-biomedical-updates-use-instructions-statstrip-glucose",
+      "publishedAt": "2026-10-30T04:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-b7272eb707addff369ce",
+      "title": "Platelet Factor 4 (PF4) Radioimmunoassay Recall: Instrumentation Laboratories Removes HemosIL AcuStar HIT-IgG(PF4-H)",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/platelet-factor-4-pf4-radioimmunoassay-recall-instrumentation-laboratories-removes-hemosil-acustar",
+      "publishedAt": "2026-10-30T04:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-a2c73909322834384dba",
+      "title": "Early Alert: Medline Removes or Corrects All Medline Brand Beds and Accessories",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-medline-removes-or-corrects-all-medline-brand-beds-and-accessories",
+      "publishedAt": "2026-10-29T04:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-9da067cb4e0d8ef1e1e6",
+      "title": "Wedgewood Pharmacy Issues Recall of Certain Compounded Veterinary  Medications Within Expiry Due to Potential Potency Issues",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/wedgewood-pharmacy-issues-recall-certain-compounded-veterinary-medications-within-expiry-due",
+      "publishedAt": "2026-10-21T04:00:00+00:00",
+      "kind": "News",
+      "image": "regulatory-affairs"
+    },
+    {
+      "id": "fda-cfe33f1bc510dfea49c6",
+      "title": "Early Alert: Cardinal Health Issues Correction for Presource Packs Containing BD Alaris Pump Infusion Sets",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-cardinal-health-issues-correction-presource-packs-containing-bd-alaris-pump-infusion",
+      "publishedAt": "2026-10-20T04:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-13c5bb9826ebcc36b8ff",
+      "title": "Update: Import Alert for Certain Olympus Medical Devices Manufactured in Japan - Letter to Health Care Providers",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/letters-health-care-providers/update-import-alert-certain-olympus-medical-devices-manufactured-japan-letter-health-care-providers",
+      "publishedAt": "2026-10-20T04:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-f1c689905171ab31642b",
+      "title": "Diagnostic Ultrasound System Correction: Philips Ultrasound Issues Updated Use Instructions for Lumify Diagnostic Ultrasound System",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/diagnostic-ultrasound-system-correction-philips-ultrasound-issues-updated-use-instructions-lumify",
+      "publishedAt": "2026-10-19T04:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-69c275ec7717d9075e4a",
+      "title": "Early Alert: Transcatheter Mitral Valve Delivery System Issue from Edwards Lifesciences",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-transcatheter-mitral-valve-delivery-system-issue-edwards-lifesciences",
+      "publishedAt": "2026-10-15T04:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-fcad7ab7453b09dbd7c5",
+      "title": "Par Health Issues Voluntary Nationwide Recall of Argatroban Injection Due to the Presence of Particulate Matter",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/par-health-issues-voluntary-nationwide-recall-argatroban-injection-due-presence-particulate-matter",
+      "publishedAt": "2026-10-14T04:00:00+00:00",
+      "kind": "News",
+      "image": "regulatory-affairs"
+    },
+    {
+      "id": "fda-2e03691b6b15a742cade",
+      "title": "Infusion Set Recall: BD and CareFusion 303, Inc. Remove BD Alaris Pump Infusion Sets",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/infusion-set-recall-bd-and-carefusion-303-inc-remove-bd-alaris-pump-infusion-sets",
+      "publishedAt": "2026-10-14T04:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-50f35633a572b6565a0f",
+      "title": "Convenience Kit Recall: AVID Medical Removes Convenience Kits Affected by BD ChloraPrep Applicator Recall",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-recall-avid-medical-removes-convenience-kits-affected-bd-chloraprep-applicator-0",
+      "publishedAt": "2026-10-14T04:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "fda-e56a34274b0dd5c36ed0",
+      "title": "Convenience Kit Recall: Medline Removes Convenience Kits Affected by BD ChloraPrep Applicator Recall",
+      "summary": "Official FDA safety notice. Read the original communication for the affected products and recommended actions.",
+      "source": "FDA MedWatch",
+      "category": "Safety",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-recall-medline-removes-convenience-kits-affected-bd-chloraprep-applicator-recall",
+      "publishedAt": "2026-10-13T04:00:00+00:00",
+      "kind": "News",
+      "image": "medical-devices"
+    },
+    {
+      "id": "nucleus-services",
+      "title": "Explore Nucleus MedLabs",
+      "summary": "Learn about Nucleus MedLabs and its healthcare, academic and professional services.",
+      "source": "Nucleus MedLabs",
+      "category": "Nucleus",
+      "url": "https://nucleusmedlabs.com/",
+      "publishedAt": null,
+      "kind": "Resource",
+      "image": "regulatory-affairs"
+    },
+    {
+      "id": "fda-medwatch",
+      "title": "Follow MedWatch safety alerts",
+      "summary": "Find official safety communications for medical products. Read the original notice for its scope and recommended actions.",
+      "source": "FDA",
+      "category": "Safety",
+      "url": "https://www.fda.gov/safety/medwatch-fda-safety-information-and-adverse-event-reporting-program/subscribe-medwatch-safety-alerts",
+      "publishedAt": null,
+      "kind": "Resource",
+      "image": "regulatory-affairs"
+    }
+  ]
+}
