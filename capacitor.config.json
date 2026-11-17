@@ -1,0 +1,19 @@
+{
+  "appId": "com.nucleusmedlabs.careershift",
+  "appName": "Nucleus MedLabs",
+  "webDir": "dist",
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false,
+    "backgroundColor": "#081F32"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0,
+      "launchAutoHide": false,
+      "backgroundColor": "#081F32",
+      "showSpinner": false
+    }
+  }
+}

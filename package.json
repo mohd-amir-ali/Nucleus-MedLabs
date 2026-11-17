@@ -1,0 +1,41 @@
+{
+  "name": "nucleus-medlabs-careershift",
+  "version": "8.6.0",
+  "description": "Nucleus MedLabs - CareerShift Navigator for Healthcare Professionals",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 app.py",
+    "start:lan": "python3 app.py --lan",
+    "start:install": "python3 install_preview.py",
+    "build": "python3 scripts/build.py",
+    "test": "python3 -m unittest discover -s tests && node tests/engine.test.cjs && node tests/workspace.test.cjs && node tests/install.test.cjs && node tests/updates.test.cjs && node tests/ui-dom.test.cjs && node tests/pdf.test.cjs",
+    "build:android": "python3 scripts/build.py --mode android",
+    "test:ui": "playwright test",
+    "audit:source": "python3 scripts/audit.py",
+    "android:prepare": "python3 scripts/prepare_android.py",
+    "bundle": "node scripts/bundle.mjs"
+  },
+  "author": "Nucleus MedLabs",
+  "license": "Proprietary",
+  "private": true,
+  "engines": {
+    "node": ">=22.22.2 <25"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.6.0",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/browser": "8.0.5",
+    "@capacitor/core": "8.6.0",
+    "@capacitor/filesystem": "8.1.5",
+    "@capacitor/preferences": "8.0.1",
+    "@capacitor/share": "8.0.3",
+    "@capacitor/splash-screen": "8.0.2",
+    "jspdf": "4.2.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.6.0",
+    "@playwright/test": "1.65.0",
+    "esbuild": "0.28.2",
+    "jsdom": "31.0.0"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "Nucleus MedLabs",
+  "short_name": "Nucleus MedLabs",
+  "description": "Healthcare career planning with skill analysis, roadmaps and saved progress",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#081F32",
+  "theme_color": "#081F32",
+  "icons": [
+    {
+      "src": "Logo-Brandkit/icons/app-dark-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "Logo-Brandkit/icons/app-dark-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "Logo-Brandkit/icons/app-dark-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "id": "./",
+  "scope": "./"
+}
